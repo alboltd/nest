@@ -82,7 +82,6 @@
     "graphql": "17.1.0",
     "graphql-subscriptions": "3.0.0",
     "gulp": "5.0.1",
-    "gulp-clang-format": "1.0.27",
     "gulp-clean": "0.4.0",
     "gulp-sourcemaps": "3.0.0",
     "gulp-typescript": "5.0.1",
