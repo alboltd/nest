@@ -138,7 +138,16 @@
   },
   "name": "@nestjs/core",
   "overrides": {
-    "decode-uri-component": "0.5.1"
+    "brace-expansion": "5.0.12",
+    "braces": "3.0.3",
+    "decode-uri-component": "0.5.1",
+    "nx": {
+      "undici": "7.30.2"
+    },
+    "request": {
+      "form-data": "2.5.6"
+    },
+    "tar": "7.5.22"
   },
   "repository": {
     "type": "git",
