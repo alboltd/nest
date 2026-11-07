@@ -1,5 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { NestExpressApplication } from '@nestjs/platform-express';
+import { engine } from 'express-handlebars';
 import request from 'supertest';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
@@ -17,6 +18,10 @@ describe('AppController (e2e)', () => {
 
     app = moduleFixture.createNestApplication<NestExpressApplication>();
     app.setBaseViewsDir(join(__dirname, '..', '..', 'views'));
+    app
+      .getHttpAdapter()
+      .getInstance()
+      .engine('hbs', engine({ extname: '.hbs', defaultLayout: false }));
     app.setViewEngine('hbs');
 
     await app.init();
