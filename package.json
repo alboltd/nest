@@ -1,63 +1,21 @@
 {
-  "name": "@nestjs/core",
-  "version": "12.0.0",
-  "description": "Modern, fast, powerful node.js web framework",
-  "homepage": "https://nestjs.com",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/nestjs/nest.git"
+  "author": "Kamil Mysliwiec",
+  "changelog": {
+    "labels": {
+      "dependencies": "Dependencies",
+      "type: bug :sob:": "Bug fixes",
+      "type: code style": "Code style tweaks",
+      "type: docs :page_facing_up:": "Docs",
+      "type: enhancement :wolf:": "Enhancements",
+      "type: feature :tada:": "Features"
+    }
   },
-  "funding": {
+  "collective": {
+    "donation": {
+      "text": "Become a partner:"
+    },
     "type": "opencollective",
     "url": "https://opencollective.com/nest"
-  },
-  "license": "MIT",
-  "type": "module",
-  "workspaces": [
-    "packages/*"
-  ],
-  "author": "Kamil Mysliwiec",
-  "scripts": {
-    "build": "tsc -b -v packages",
-    "postbuild": "npm run move:node_modules",
-    "build:dev": "tsc -b -v packages --watch",
-    "prebuild:prod": "npm run clean",
-    "build:prod": "tsc -b -v packages",
-    "changelog": "lerna-changelog",
-    "clean": "tsc -b --clean packages",
-    "move:samples": "gulp move:samples",
-    "move:node_modules": "gulp move:node_modules",
-    "build:samples": "gulp install:samples && npm run build && npm run move:samples && gulp build:samples",
-    "codechecks:benchmarks": "codechecks ./tools/benchmarks/check-benchmarks.ts",
-    "coverage": "vitest run --coverage --config vitest.config.coverage.mts || true",
-    "format": "prettier \"**/*.ts\" \"packages/**/*.json\" --ignore-path ./.prettierignore --write && git status",
-    "postinstall": "opencollective",
-    "test": "vitest run",
-    "test:dev": "vitest",
-    "test:cov": "vitest run --coverage --config vitest.config.coverage.mts || true",
-    "test:integration": "vitest run --config vitest.config.integration.mts",
-    "test:docker:up": "node scripts/docker-compose.js -f integration/docker-compose.yml up -d",
-    "test:docker:wait:rmq": "node scripts/wait-for-rabbitmq.js",
-    "test:docker:down": "node scripts/docker-compose.js -f integration/docker-compose.yml down",
-    "lint": "oxlint packages integration",
-    "lint:fix": "oxlint --fix packages integration",
-    "lint:ci": "oxlint packages",
-    "prerelease": "gulp copy-misc",
-    "publish": "npm run prerelease && npm run build:prod && ./node_modules/.bin/lerna publish --force-publish --exact -m \"chore(release): publish %s release\"",
-    "prepublishOnly": "npm run changelog | pbcopy",
-    "publish:beta": "npm run prerelease && npm run build:prod && ./node_modules/.bin/lerna publish --npm-tag=beta -m \"chore(release): publish %s release\"",
-    "publish:next": "npm run prerelease && npm run build:prod && ./node_modules/.bin/lerna publish --npm-tag=next --no-git-tag-version --no-push -m \"chore(release): publish %s release\"",
-    "publish:rc": "npm run prerelease && npm run build:prod && ./node_modules/.bin/lerna publish --npm-tag=rc -m \"chore(release): publish %s release\"",
-    "publish:test": "npm run prerelease && npm run build:prod && ./node_modules/.bin/lerna publish --force-publish --npm-tag=test --no-git-tag-version --no-push -m \"chore(release): publish %s release\"",
-    "prepare": "husky"
-  },
-  "lint-staged": {
-    "**/*.ts": [
-      "prettier --ignore-path ./.prettierignore --write"
-    ],
-    "packages/**/*.json": [
-      "prettier --ignore-path ./.prettierignore --write"
-    ]
   },
   "dependencies": {
     "@nuxt/opencollective": "0.4.1",
@@ -80,6 +38,7 @@
     "uid": "2.0.2",
     "uuid": "14.0.3"
   },
+  "description": "Modern, fast, powerful node.js web framework",
   "devDependencies": {
     "@apollo/server": "5.5.1",
     "@as-integrations/express5": "1.1.2",
@@ -161,28 +120,72 @@
     "ws": "8.22.0"
   },
   "engines": {
-    "node": ">= 20"
+    "node": "\u003e= 20"
   },
-  "collective": {
+  "funding": {
     "type": "opencollective",
-    "url": "https://opencollective.com/nest",
-    "donation": {
-      "text": "Become a partner:"
-    }
+    "url": "https://opencollective.com/nest"
   },
-  "changelog": {
-    "labels": {
-      "type: feature :tada:": "Features",
-      "type: bug :sob:": "Bug fixes",
-      "type: enhancement :wolf:": "Enhancements",
-      "type: docs :page_facing_up:": "Docs",
-      "type: code style": "Code style tweaks",
-      "dependencies": "Dependencies"
-    }
+  "homepage": "https://nestjs.com",
+  "license": "MIT",
+  "lint-staged": {
+    "**/*.ts": [
+      "prettier --ignore-path ./.prettierignore --write"
+    ],
+    "packages/**/*.json": [
+      "prettier --ignore-path ./.prettierignore --write"
+    ]
   },
+  "name": "@nestjs/core",
   "overrides": {
+    "nx": {
+      "undici": "7.30.2"
+    },
     "request": {
       "form-data": "2.5.6"
     }
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nestjs/nest.git"
+  },
+  "scripts": {
+    "build": "tsc -b -v packages",
+    "build:dev": "tsc -b -v packages --watch",
+    "build:prod": "tsc -b -v packages",
+    "build:samples": "gulp install:samples \u0026\u0026 npm run build \u0026\u0026 npm run move:samples \u0026\u0026 gulp build:samples",
+    "changelog": "lerna-changelog",
+    "clean": "tsc -b --clean packages",
+    "codechecks:benchmarks": "codechecks ./tools/benchmarks/check-benchmarks.ts",
+    "coverage": "vitest run --coverage --config vitest.config.coverage.mts || true",
+    "format": "prettier \"**/*.ts\" \"packages/**/*.json\" --ignore-path ./.prettierignore --write \u0026\u0026 git status",
+    "lint": "oxlint packages integration",
+    "lint:ci": "oxlint packages",
+    "lint:fix": "oxlint --fix packages integration",
+    "move:node_modules": "gulp move:node_modules",
+    "move:samples": "gulp move:samples",
+    "postbuild": "npm run move:node_modules",
+    "postinstall": "opencollective",
+    "prebuild:prod": "npm run clean",
+    "prepare": "husky",
+    "prepublishOnly": "npm run changelog | pbcopy",
+    "prerelease": "gulp copy-misc",
+    "publish": "npm run prerelease \u0026\u0026 npm run build:prod \u0026\u0026 ./node_modules/.bin/lerna publish --force-publish --exact -m \"chore(release): publish %s release\"",
+    "publish:beta": "npm run prerelease \u0026\u0026 npm run build:prod \u0026\u0026 ./node_modules/.bin/lerna publish --npm-tag=beta -m \"chore(release): publish %s release\"",
+    "publish:next": "npm run prerelease \u0026\u0026 npm run build:prod \u0026\u0026 ./node_modules/.bin/lerna publish --npm-tag=next --no-git-tag-version --no-push -m \"chore(release): publish %s release\"",
+    "publish:rc": "npm run prerelease \u0026\u0026 npm run build:prod \u0026\u0026 ./node_modules/.bin/lerna publish --npm-tag=rc -m \"chore(release): publish %s release\"",
+    "publish:test": "npm run prerelease \u0026\u0026 npm run build:prod \u0026\u0026 ./node_modules/.bin/lerna publish --force-publish --npm-tag=test --no-git-tag-version --no-push -m \"chore(release): publish %s release\"",
+    "test": "vitest run",
+    "test:cov": "vitest run --coverage --config vitest.config.coverage.mts || true",
+    "test:dev": "vitest",
+    "test:docker:down": "node scripts/docker-compose.js -f integration/docker-compose.yml down",
+    "test:docker:up": "node scripts/docker-compose.js -f integration/docker-compose.yml up -d",
+    "test:docker:wait:rmq": "node scripts/wait-for-rabbitmq.js",
+    "test:integration": "vitest run --config vitest.config.integration.mts"
+  },
+  "type": "module",
+  "version": "12.0.0",
+  "workspaces": [
+    "packages/*"
+  ]
 }
