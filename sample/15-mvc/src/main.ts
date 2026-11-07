@@ -1,5 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { NestExpressApplication } from '@nestjs/platform-express';
+import { engine } from 'express-handlebars';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 import { AppModule } from './app.module.js';
@@ -11,6 +12,10 @@ async function bootstrap() {
 
   app.useStaticAssets(join(__dirname, '..', 'public'));
   app.setBaseViewsDir(join(__dirname, '..', 'views'));
+  app
+    .getHttpAdapter()
+    .getInstance()
+    .engine('hbs', engine({ extname: '.hbs', defaultLayout: false }));
   app.setViewEngine('hbs');
 
   await app.listen(3000);
