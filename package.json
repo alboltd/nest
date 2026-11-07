@@ -138,6 +138,7 @@
   },
   "name": "@nestjs/core",
   "overrides": {
+    "brace-expansion": "5.0.12",
     "nx": {
       "undici": "7.30.2"
     },
