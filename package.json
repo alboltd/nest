@@ -141,6 +141,7 @@
     "nx": {
       "undici": "7.30.2"
     },
+    "postcss": "8.5.32",
     "request": {
       "form-data": "2.5.6"
     },
